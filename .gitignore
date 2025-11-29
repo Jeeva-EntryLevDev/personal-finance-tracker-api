@@ -1,33 +1,128 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+#HELP.md
+#target/
+#.mvn/wrapper/maven-wrapper.jar
+#!**/src/main/**/target/
+#!**/src/test/**/target/
+#
+#### STS ###
+#.apt_generated
+#.classpath
+#.factorypath
+#.project
+#.settings
+#.springBeans
+#.sts4-cache
+#
+#### IntelliJ IDEA ###
+#.idea
+#*.iws
+#*.iml
+#*.ipr
+#
+#### NetBeans ###
+#/nbproject/private/
+#/nbbuild/
+#/dist/
+#/nbdist/
+#/.nb-gradle/
+#build/
+#!**/src/main/**/build/
+#!**/src/test/**/build/
+#
+#### VS Code ###
+#.vscode/
 
-### STS ###
+
+
+
+############################################################
+# Maven / Spring Boot
+############################################################
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+**/target/
+**/build/
+
+# Logs
+*.log
+logs/
+*.log*
+
+# Spring Boot DevTools
+.reloader/
+
+############################################################
+# Java
+############################################################
+*.class
+*.jar
+*.war
+*.ear
+
+############################################################
+# IntelliJ IDEA
+############################################################
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+############################################################
+# Eclipse / Spring STS
+############################################################
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
-.springBeans
-.sts4-cache
+.settings/
+.springBeans/
+.sts4-cache/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
+############################################################
+# NetBeans
+############################################################
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
+############################################################
+# VS Code
+############################################################
 .vscode/
+
+############################################################
+# OS Files
+############################################################
+# macOS Finder
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows junk
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+############################################################
+# Node (if frontend added later)
+############################################################
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+############################################################
+# Environment / Secret Files
+############################################################
+.env
+*.env
+.env.*
+application-dev.properties
+application-prod.properties
+application-dev.yml
+application-prod.yml
