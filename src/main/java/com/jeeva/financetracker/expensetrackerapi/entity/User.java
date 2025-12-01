@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
+import lombok.Builder;
 import java.time.LocalDateTime;
 
 @Entity
@@ -42,4 +42,5 @@ public class User {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
 }

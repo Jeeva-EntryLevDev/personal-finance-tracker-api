@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String sayHello(){
-        return "Expense Tracker Running API is running";
+        return "Expense";
     }
 }
