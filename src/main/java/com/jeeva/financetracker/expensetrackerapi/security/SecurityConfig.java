@@ -20,6 +20,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().permitAll()
                 )
+
+                .headers(headers -> headers
+                        .frameOptions(frame -> frame.disable())
+                )
                 .formLogin(form -> form.disable()) // ✅ disable default login form
                 .httpBasic(basic -> basic.disable()); // ✅ disable basic auth popup
 
