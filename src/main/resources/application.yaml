@@ -25,3 +25,8 @@ logging:
   level:
     org.springframework: INFO
     org.hibernate.SQL: DEBUG
+
+app:
+  jwt:
+    secret: 26d0ebdb37807daeea431e2a9bd11506
+    expiration: 86400000  # 1 day in milliseconds
