@@ -2,6 +2,7 @@ package com.jeeva.financetracker.expensetrackerapi.service;
 
 import com.jeeva.financetracker.expensetrackerapi.entity.Role;
 import com.jeeva.financetracker.expensetrackerapi.entity.User;
+import com.jeeva.financetracker.expensetrackerapi.exception.BadRequestException;
 import com.jeeva.financetracker.expensetrackerapi.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService {
     public User createUser(String fullName, String email, String rawPassword, Role role) {
         // basic check – you can improve later with custom exceptions
         if (userRepository.existsByEmail(email)) {
-            throw new IllegalArgumentException("Email already in use: " + email);
+            throw new BadRequestException("Email already in use: " + email);
         }
 
         String encodedPassword = passwordEncoder.encode(rawPassword);

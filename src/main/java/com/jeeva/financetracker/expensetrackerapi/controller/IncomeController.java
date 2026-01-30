@@ -32,15 +32,20 @@ public class IncomeController {
     @GetMapping
     public List<IncomeResponse> getIncomes(
             @AuthenticationPrincipal User user,
+
+            @RequestParam(required = false) Long categoryId,
+
             @RequestParam(required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate startDate,
+
             @RequestParam(required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate endDate
     ) {
-        return incomeService.getIncomes(user, startDate, endDate);
+        return incomeService.getIncomes(user, categoryId, startDate, endDate);
     }
+
 
     @PutMapping("/{id}")
     public IncomeResponse updateIncome(

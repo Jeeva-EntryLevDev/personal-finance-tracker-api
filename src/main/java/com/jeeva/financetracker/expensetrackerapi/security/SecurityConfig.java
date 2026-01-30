@@ -35,6 +35,7 @@
 package com.jeeva.financetracker.expensetrackerapi.security;
 
 import com.jeeva.financetracker.expensetrackerapi.security.jwt.JwtFilter;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -63,6 +64,35 @@ public class SecurityConfig {
                 // No HTTP session — JWT only
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+
+                // 🔥 THIS IS THE KEY PART
+                .exceptionHandling(ex -> ex
+                        // ⛔ 401 — No / invalid JWT
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                            response.setContentType("application/json");
+                            response.getWriter().write("""
+                    {
+                      "status": 401,
+                      "error": "Unauthorized",
+                      "message": "JWT token is missing or invalid"
+                    }
+                """);
+                        })
+
+                        // ⛔ 403 — Authenticated but not allowed
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                            response.setContentType("application/json");
+                            response.getWriter().write("""
+                    {
+                      "status": 403,
+                      "error": "Forbidden",
+                      "message": "You do not have permission to access this resource"
+                    }
+                """);
+                        })
                 )
 
                 // Authorization rules

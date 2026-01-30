@@ -13,15 +13,19 @@ public interface IncomeService {
 
     List<IncomeResponse> getIncomes(
             User user,
+            Long categoryId,
             LocalDate startDate,
             LocalDate endDate
     );
+
 
     IncomeResponse updateIncome(
             Long incomeId,
             IncomeRequest request,
             User user
     );
+
+
 
     void deleteIncome(Long incomeId, User user);
 }

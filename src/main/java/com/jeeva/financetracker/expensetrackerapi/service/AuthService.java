@@ -5,6 +5,7 @@ import com.jeeva.financetracker.expensetrackerapi.dto.LoginRequest;
 import com.jeeva.financetracker.expensetrackerapi.dto.RegisterRequest;
 import com.jeeva.financetracker.expensetrackerapi.entity.Role;
 import com.jeeva.financetracker.expensetrackerapi.entity.User;
+import com.jeeva.financetracker.expensetrackerapi.exception.BadRequestException;
 import com.jeeva.financetracker.expensetrackerapi.security.jwt.JwtService;
 import com.jeeva.financetracker.expensetrackerapi.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,8 +40,10 @@ public class AuthService {
     // Handle login and return JWT
     public AuthResponse login(LoginRequest request) {
 
+
+
         User user = userService.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
+                .orElseThrow(() -> new BadRequestException("Email Not Found Please Signup"));
 
         // check password
         boolean passwordMatches = passwordEncoder.matches(
@@ -49,7 +52,7 @@ public class AuthService {
         );
 
         if (!passwordMatches) {
-            throw new RuntimeException("Invalid email or password");
+            throw new BadRequestException("Invalid emails or password");
         }
 
         // generate JWT token

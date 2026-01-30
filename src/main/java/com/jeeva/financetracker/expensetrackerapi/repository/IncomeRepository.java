@@ -9,9 +9,23 @@ import java.util.List;
 
 public interface IncomeRepository extends JpaRepository<Income, Long> {
 
-    // Get all incomes of a user
     List<Income> findByUser(User user);
 
-    // Filter by date range
-    List<Income> findByUserAndDateBetween(User user, LocalDate start, LocalDate end);
+    List<Income> findByUserAndDateBetween(
+            User user,
+            LocalDate start,
+            LocalDate end
+    );
+
+    List<Income> findByUserAndCategoryId(
+            User user,
+            Long categoryId
+    );
+
+    List<Income> findByUserAndCategoryIdAndDateBetween(
+            User user,
+            Long categoryId,
+            LocalDate start,
+            LocalDate end
+    );
 }
