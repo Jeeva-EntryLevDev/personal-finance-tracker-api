@@ -36,7 +36,7 @@ public class IncomeServiceImpl implements IncomeService {
 
 
         Category category = categoryRepository.findById(request.getCategoryId())
-                .orElseThrow(() -> new ResourceNotFoundException("C     ategory not found"));      // it'll throw when the user give the id which is not present
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));      // it'll throw when the user give the id which is not present
 
         // 🔐 Ownership check
         if (category.getUser() != null &&
